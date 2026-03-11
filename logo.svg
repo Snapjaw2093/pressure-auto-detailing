@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- Background (Optional, transparent by default) -->
+  <rect width="500" height="500" fill="none" />
+  
+  <!-- Outer Shield/Emblem -->
+  <path d="M 250 50 L 400 120 L 400 300 C 400 400 250 480 250 480 C 250 480 100 400 100 300 L 100 120 Z" fill="#0f172a" stroke="#3b82f6" stroke-width="8" stroke-linejoin="round"/>
+  
+  <!-- Water Drop / Pressure Silhouette -->
+  <path d="M 250 140 C 250 140 180 260 180 320 C 180 360 210 390 250 390 C 290 390 320 360 320 320 C 320 260 250 140 250 140 Z" fill="url(#blueGradient)" />
+  
+  <!-- Pressure Wave Lines / Shine inside drop -->
+  <path d="M 220 330 Q 250 360 280 330" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 235 300 Q 250 320 265 300" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 245 270 L 255 270" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- High Pressure Wand Silhouette -->
+  <path d="M 160 380 L 220 320" fill="none" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="220" cy="320" r="8" fill="#3b82f6" />
+  
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+</svg>
