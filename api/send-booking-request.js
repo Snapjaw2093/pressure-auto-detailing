@@ -1,20 +1,9 @@
-const { Resend } = require('resend');
-
-// Sends straight to the business inbox — override via the BOOKING_TO_EMAIL
-// env var without touching code. The "from" address uses Resend's shared
-// sandbox domain, which can send to this address with no domain setup.
-const TO_EMAIL = process.env.BOOKING_TO_EMAIL || 'pratt2093@gmail.com';
-const FROM_EMAIL = 'Blackline Detailing <onboarding@resend.dev>';
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
-  }[c]));
-}
+// Sends booking requests as a Telegram DM from your own bot.
+// Setup: message @BotFather to create a bot and get TELEGRAM_BOT_TOKEN, then
+// message your new bot once and use TELEGRAM_CHAT_ID from getUpdates to find
+// your chat id. See README for the full walkthrough.
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -23,7 +12,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!BOT_TOKEN || !CHAT_ID) {
     res.status(500).json({ error: 'Booking requests are not configured on this deployment yet.' });
     return;
   }
@@ -35,40 +24,37 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const serviceItems = Array.isArray(services) && services.length
-    ? services.map((s) => `<li>${escapeHtml(s)}</li>`).join('')
-    : '<li>None selected</li>';
+  const serviceList = Array.isArray(services) && services.length ? services.join(', ') : 'None selected';
 
-  const html = `
-    <h2>New Booking Request &mdash; Blackline Detailing</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-    <p><strong>Email:</strong> ${email ? escapeHtml(email) : 'Not provided'}</p>
-    <p><strong>Vehicle:</strong> ${escapeHtml(vehicle)}</p>
-    <p><strong>Service Address:</strong> ${escapeHtml(address)}</p>
-    <p><strong>Services requested:</strong></p>
-    <ul>${serviceItems}</ul>
-    <p><strong>Notes:</strong> ${notes ? escapeHtml(notes) : 'None'}</p>
-  `;
-
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  // Plain text (no parse_mode) so nothing in a customer's input can be
+  // misread as Telegram markdown formatting.
+  const text = [
+    'New Booking Request — Blackline Detailing',
+    '',
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Email: ${email || 'Not provided'}`,
+    `Vehicle: ${vehicle}`,
+    `Address: ${address}`,
+    `Services: ${serviceList}`,
+    `Notes: ${notes || 'None'}`,
+  ].join('\n');
 
   try {
-    const { error } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: email || undefined,
-      subject: `New Booking Request from ${name}`,
-      html,
+    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: CHAT_ID, text }),
     });
+    const data = await response.json();
 
-    if (error) {
-      throw error;
+    if (!data.ok) {
+      throw new Error(data.description || 'Telegram API error');
     }
 
     res.status(200).json({ ok: true });
   } catch (err) {
-    console.error('Resend send failed:', err);
-    res.status(500).json({ error: 'Unable to send your request right now. Please call or email us directly.' });
+    console.error('Telegram send failed:', err);
+    res.status(500).json({ error: 'Unable to send your request right now. Please call us instead.' });
   }
 };
