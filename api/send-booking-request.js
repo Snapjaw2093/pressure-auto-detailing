@@ -2,18 +2,12 @@
 // Setup: message @BotFather to create a bot and get TELEGRAM_BOT_TOKEN, then
 // message your new bot once and use TELEGRAM_CHAT_ID from getUpdates to find
 // your chat id. See README for the full walkthrough.
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const { sendTelegramMessage } = require('./_telegram');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     res.status(405).json({ error: 'Method not allowed' });
-    return;
-  }
-
-  if (!BOT_TOKEN || !CHAT_ID) {
-    res.status(500).json({ error: 'Booking requests are not configured on this deployment yet.' });
     return;
   }
 
@@ -41,20 +35,14 @@ module.exports = async (req, res) => {
   ].join('\n');
 
   try {
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text }),
-    });
-    const data = await response.json();
-
-    if (!data.ok) {
-      throw new Error(data.description || 'Telegram API error');
-    }
-
+    await sendTelegramMessage(text);
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Telegram send failed:', err);
-    res.status(500).json({ error: 'Unable to send your request right now. Please call us instead.' });
+    res.status(500).json({
+      error: err.notConfigured
+        ? 'Booking requests are not configured on this deployment yet.'
+        : 'Unable to send your request right now. Please call us instead.',
+    });
   }
 };

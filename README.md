@@ -58,6 +58,7 @@ The "Request a Free Paint Assessment" form sends its details straight to you as 
    - `TELEGRAM_BOT_TOKEN` = the token from step 1
    - `TELEGRAM_CHAT_ID` = the chat id from step 3
 5. Redeploy the project so the function picks up the new environment variables.
+6. **Verify it worked** by scrolling to the bottom of the site and clicking **Test Telegram Connection** in the footer. It sends an instant test DM and shows you the result right on the page — including the actual error message if something's misconfigured (e.g. wrong chat id), so you don't need to dig through Vercel logs to debug it.
 
 That's it — no webhook, no paid tier, no domain setup. Every submission arrives as a plain-text Telegram DM from your bot with the customer's name, phone, email (if given), vehicle, address, requested services, and notes. If you ever want it in a group instead of a personal DM, add the bot to a Telegram group and use the group's chat id (starts with `-`) instead.
 
@@ -70,5 +71,6 @@ Everything lives in `index.html`:
 - Online deposit widget — "Reserve Your Spot Online" card in the booking section; the dropdown values must match the keys in `SERVICES` in `api/create-checkout-session.js`
 - Free-quote booking form — submits via JS `fetch` to `/api/send-booking-request`, which DMs the details to you on Telegram
 - Contact info (phone/email) — footer and hero
+- "Test Telegram Connection" link — bottom of the footer; calls `/api/send-test-message` to verify your Telegram setup
 
-`logo.svg` is the site logo/favicon. `api/` holds the two serverless functions: `create-checkout-session.js` (deposit amount and service list for Stripe) and `send-booking-request.js` (Telegram message template for booking requests).
+`logo.svg` is the site logo/favicon. `api/` holds the serverless functions: `create-checkout-session.js` (deposit amount and service list for Stripe), `send-booking-request.js` (message template for booking requests), `send-test-message.js` (the footer test button), and `_telegram.js` (shared Telegram-sending helper used by the other two — the `_` prefix keeps Vercel from treating it as its own route).

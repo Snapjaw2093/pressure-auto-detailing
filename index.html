@@ -549,6 +549,12 @@
                 &copy; 2026 Blackline Detailing. All rights reserved.
             </div>
         </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 flex flex-col items-center gap-2">
+            <button id="telegramTestButton" type="button" class="text-xs text-zinc-600 hover:text-zinc-400 transition inline-flex items-center gap-1.5">
+                <i class="fab fa-telegram"></i> Test Telegram Connection
+            </button>
+            <p id="telegramTestStatus" class="text-xs text-center hidden"></p>
+        </div>
     </footer>
 
     <script>
@@ -632,6 +638,30 @@
             } finally {
                 bookingSubmit.disabled = false;
                 bookingSubmit.innerHTML = originalLabel;
+            }
+        });
+
+        // Telegram test message button
+        const telegramTestButton = document.getElementById('telegramTestButton');
+        const telegramTestStatus = document.getElementById('telegramTestStatus');
+        telegramTestButton.addEventListener('click', async () => {
+            telegramTestButton.disabled = true;
+            telegramTestStatus.className = 'text-xs text-center text-zinc-500';
+            telegramTestStatus.textContent = 'Sending test message...';
+            telegramTestStatus.classList.remove('hidden');
+            try {
+                const res = await fetch('/api/send-test-message', { method: 'POST' });
+                const data = await res.json();
+                if (!res.ok || !data.ok) {
+                    throw new Error(data.error || 'Something went wrong.');
+                }
+                telegramTestStatus.className = 'text-xs text-center text-emerald-400';
+                telegramTestStatus.textContent = 'Test message sent — check Telegram!';
+            } catch (err) {
+                telegramTestStatus.className = 'text-xs text-center text-red-400';
+                telegramTestStatus.textContent = err.message || 'Unable to send test message.';
+            } finally {
+                telegramTestButton.disabled = false;
             }
         });
 
