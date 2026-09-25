@@ -3,54 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pressure Auto Detailing | Paint Correction &amp; Mobile Detailing in Venice, FL</title>
-    <meta name="description" content="Mobile paint correction specialists in Venice, FL. We remove swirls, scratches &amp; oxidation and restore a mirror-glass finish, then protect it with ceramic coating — right in your driveway.">
+    <title>Blackline Detailing | Paint Correction &amp; Mobile Detailing in Venice, FL</title>
+    <meta name="description" content="Mobile paint correction specialists in Venice, FL. We remove swirls, scratches &amp; oxidation and restore a deep, mirror-black finish, then protect it with ceramic coating — right in your driveway.">
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .hero-pattern {
-            background-color: #0f172a;
-            background-image: radial-gradient(#3b82f6 0.5px, #0f172a 0.5px);
+            background-color: #000000;
+            background-image: radial-gradient(rgba(161,161,170,0.4) 0.5px, #000000 0.5px);
             background-size: 10px 10px;
         }
         .before-surface {
             background:
-                repeating-radial-gradient(circle at 30% 30%, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 1px, transparent 2px, transparent 6px),
+                repeating-radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 2px, transparent 6px),
                 repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 10px),
-                linear-gradient(160deg, #475569 0%, #334155 45%, #1e293b 100%);
-            filter: saturate(0.7) contrast(0.85);
+                linear-gradient(160deg, #52525b 0%, #3f3f46 45%, #27272a 100%);
+            filter: saturate(0.6) contrast(0.85);
         }
         .after-surface {
-            background:
-                linear-gradient(120deg, #0ea5e9 0%, #1d4ed8 25%, #0f172a 50%, #3b82f6 75%, #0ea5e9 100%);
+            background: linear-gradient(120deg, #000000 0%, #18181b 25%, #3f3f46 45%, #f4f4f5 50%, #3f3f46 55%, #18181b 75%, #000000 100%);
         }
         details > summary { list-style: none; cursor: pointer; }
         details > summary::-webkit-details-marker { display: none; }
         details[open] .faq-chevron { transform: rotate(180deg); }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-200 font-sans antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-black text-zinc-300 font-sans antialiased selection:bg-zinc-300 selection:text-black">
+
+    <!-- Payment status banner (populated by JS if redirected back from Stripe) -->
+    <div id="statusBanner" class="hidden border-b text-sm text-center py-3 px-4"></div>
 
     <!-- Navigation -->
-    <nav class="bg-slate-900/95 sticky top-0 z-50 border-b border-slate-800 backdrop-blur-sm">
+    <nav class="bg-black/95 sticky top-0 z-50 border-b border-zinc-800 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0 flex items-center gap-3">
-                    <img src="logo.svg" alt="Pressure Auto Detailing" class="h-10 w-10">
-                    <span class="font-bold text-xl tracking-tight text-white uppercase">Pressure <span class="text-blue-500">Detailing</span></span>
+                    <img src="logo.svg" alt="Blackline Detailing" class="h-10 w-10">
+                    <span class="font-bold text-xl tracking-tight text-white uppercase">Blackline <span class="text-zinc-400">Detailing</span></span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#correction" class="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition">Paint Correction</a>
-                        <a href="#process" class="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition">Process</a>
-                        <a href="#services" class="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition">Services</a>
-                        <a href="#faq" class="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition">FAQ</a>
-                        <a href="#book" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-md text-sm font-bold shadow-lg shadow-blue-500/30 transition">Book Now</a>
+                        <a href="#correction" class="hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition">Paint Correction</a>
+                        <a href="#process" class="hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition">Process</a>
+                        <a href="#services" class="hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition">Services</a>
+                        <a href="#faq" class="hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition">FAQ</a>
+                        <a href="#book" class="bg-zinc-200 hover:bg-white text-black px-5 py-2.5 rounded-md text-sm font-bold shadow-lg shadow-black/40 transition">Book Now</a>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <a href="#book" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-bold shadow-lg shadow-blue-500/30 transition">Book Now</a>
+                    <a href="#book" class="bg-zinc-200 hover:bg-white text-black px-4 py-2 rounded-md text-sm font-bold shadow-lg shadow-black/40 transition">Book Now</a>
                 </div>
             </div>
         </div>
@@ -60,18 +62,18 @@
     <div class="hero-pattern relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28">
             <div class="text-center max-w-3xl mx-auto">
-                <span class="inline-block bg-blue-500/10 text-blue-400 text-xs font-bold tracking-wide uppercase px-4 py-1.5 rounded-full mb-6 border border-blue-500/20">Paint Correction Specialists</span>
+                <span class="inline-block bg-zinc-800/60 text-zinc-300 text-xs font-bold tracking-wide uppercase px-4 py-1.5 rounded-full mb-6 border border-zinc-600/40">Paint Correction Specialists</span>
                 <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
-                    Swirl-Free. Scratch-Free. <span class="text-blue-500">Mirror Finish.</span>
+                    Swirl-Free. Scratch-Free. <span class="text-zinc-400">Mirror Black Finish.</span>
                 </h1>
-                <p class="text-xl text-slate-400 mb-10">
+                <p class="text-xl text-zinc-400 mb-10">
                     We machine-correct your paint to remove swirls, scratches, and oxidation — then protect it with ceramic coating. Mobile service, right in your driveway in Venice, FL.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#book" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-lg shadow-blue-500/30 transition flex items-center justify-center gap-2">
+                    <a href="#book" class="bg-zinc-200 hover:bg-white text-black px-8 py-4 rounded-lg text-lg font-bold shadow-lg shadow-black/40 transition flex items-center justify-center gap-2">
                         <i class="fas fa-calendar-check"></i> Book a Free Paint Assessment
                     </a>
-                    <a href="tel:7208855927" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-lg text-lg font-bold border border-slate-700 transition flex items-center justify-center gap-2">
+                    <a href="tel:7208855927" class="bg-zinc-900 hover:bg-zinc-800 text-white px-8 py-4 rounded-lg text-lg font-bold border border-zinc-700 transition flex items-center justify-center gap-2">
                         <i class="fas fa-phone"></i> (720) 885-5927
                     </a>
                 </div>
@@ -79,326 +81,333 @@
 
             <!-- Trust bar -->
             <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
-                <div class="bg-slate-800/60 border border-slate-700 rounded-xl py-4 px-2">
-                    <i class="fas fa-car text-blue-500 mb-2"></i>
-                    <p class="text-xs text-slate-400 font-medium">100% Mobile Service</p>
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl py-4 px-2">
+                    <i class="fas fa-car text-zinc-300 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">100% Mobile Service</p>
                 </div>
-                <div class="bg-slate-800/60 border border-slate-700 rounded-xl py-4 px-2">
-                    <i class="fas fa-shield-halved text-blue-500 mb-2"></i>
-                    <p class="text-xs text-slate-400 font-medium">Fully Insured</p>
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl py-4 px-2">
+                    <i class="fas fa-shield-halved text-zinc-300 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">Fully Insured</p>
                 </div>
-                <div class="bg-slate-800/60 border border-slate-700 rounded-xl py-4 px-2">
-                    <i class="fas fa-magnifying-glass text-blue-500 mb-2"></i>
-                    <p class="text-xs text-slate-400 font-medium">Free Paint Inspection</p>
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl py-4 px-2">
+                    <i class="fas fa-magnifying-glass text-zinc-300 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">Free Paint Inspection</p>
                 </div>
-                <div class="bg-slate-800/60 border border-slate-700 rounded-xl py-4 px-2">
-                    <i class="fas fa-star text-blue-500 mb-2"></i>
-                    <p class="text-xs text-slate-400 font-medium">Satisfaction Guaranteed</p>
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl py-4 px-2">
+                    <i class="fas fa-star text-zinc-300 mb-2"></i>
+                    <p class="text-xs text-zinc-400 font-medium">Satisfaction Guaranteed</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- What is Paint Correction -->
-    <div id="correction" class="py-24 bg-slate-950">
+    <div id="correction" class="py-24 bg-zinc-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">What Is Paint Correction?</h2>
-                    <p class="text-slate-400 mb-4">
-                        Every car's clear coat picks up damage over time — wash swirls, spider webbing, bird bath etching, oxidation, and light scratches that dull the finish and hide the true color of your paint.
+                    <p class="text-zinc-400 mb-4">
+                        Every car's clear coat picks up damage over time — wash swirls, spider webbing, bird bath etching, oxidation, and light scratches that dull the finish and hide the true depth of your paint. On dark paint, especially black, every one of those defects shows up under direct light.
                     </p>
-                    <p class="text-slate-400 mb-6">
+                    <p class="text-zinc-400 mb-6">
                         Paint correction is the process of machine-polishing away a microscopic layer of clear coat to level out that damage, revealing a deep, glass-like reflection underneath. It's the difference between a car that's "clean" and a car that looks brand new.
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-3">
-                            <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-                            <span class="text-slate-300">Removes swirl marks, wash-induced scratches &amp; holograms</span>
+                            <i class="fas fa-check-circle text-zinc-300 mt-1"></i>
+                            <span class="text-zinc-300">Removes swirl marks, wash-induced scratches &amp; holograms</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-                            <span class="text-slate-300">Eliminates oxidation and restores true paint color and depth</span>
+                            <i class="fas fa-check-circle text-zinc-300 mt-1"></i>
+                            <span class="text-zinc-300">Eliminates oxidation and restores true paint color and depth</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="fas fa-check-circle text-blue-500 mt-1"></i>
-                            <span class="text-slate-300">Maximizes gloss and reflection before sealing or coating</span>
+                            <i class="fas fa-check-circle text-zinc-300 mt-1"></i>
+                            <span class="text-zinc-300">Maximizes gloss and reflection before sealing or coating</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Before / After comparison slider -->
                 <div>
-                    <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-700 select-none shadow-2xl">
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-zinc-700 select-none shadow-2xl shadow-black/60">
                         <div class="absolute inset-0 before-surface flex items-end p-4">
-                            <span class="bg-slate-950/80 text-xs font-bold px-3 py-1 rounded-full text-red-400 border border-red-500/30">BEFORE: Swirls &amp; Oxidation</span>
+                            <span class="bg-black/80 text-xs font-bold px-3 py-1 rounded-full text-zinc-300 border border-zinc-600/50">BEFORE: Swirls &amp; Oxidation</span>
                         </div>
                         <div id="afterPanel" class="absolute inset-0 after-surface flex items-end p-4 overflow-hidden" style="width:50%">
-                            <span class="bg-slate-950/80 text-xs font-bold px-3 py-1 rounded-full text-blue-400 border border-blue-500/30 whitespace-nowrap">AFTER: Corrected &amp; Polished</span>
+                            <span class="bg-black/80 text-xs font-bold px-3 py-1 rounded-full text-white border border-zinc-400/50 whitespace-nowrap">AFTER: Mirror Black Finish</span>
                         </div>
                         <div id="handleLine" class="absolute inset-y-0 pointer-events-none" style="left:50%">
                             <div class="w-0.5 h-full bg-white/90 -translate-x-1/2"></div>
                             <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full h-10 w-10 flex items-center justify-center shadow-lg">
-                                <i class="fas fa-arrows-left-right text-slate-900 text-sm"></i>
+                                <i class="fas fa-arrows-left-right text-black text-sm"></i>
                             </div>
                         </div>
                         <input type="range" id="compareSlider" min="0" max="100" value="50" aria-label="Drag to compare before and after paint correction" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize">
                     </div>
-                    <p class="text-center text-xs text-slate-500 mt-3">Drag the slider to compare &mdash; illustrative example</p>
+                    <p class="text-center text-xs text-zinc-500 mt-3">Drag the slider to compare &mdash; illustrative example</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Paint Correction Packages -->
-    <div class="py-24 bg-slate-800">
+    <div class="py-24 bg-zinc-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Paint Correction Packages</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Correction level is chosen based on your paint's condition. Every package starts with a free inspection so you only pay for what your car needs.</p>
+                <p class="text-zinc-400 max-w-2xl mx-auto">Correction level is chosen based on your paint's condition. Every package starts with a free inspection so you only pay for what your car needs.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Stage 1 -->
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition flex flex-col">
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 1</span>
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition flex flex-col">
+                    <span class="text-zinc-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 1</span>
                     <h3 class="text-xl font-bold text-white mb-2">Single-Step Polish</h3>
                     <p class="text-3xl font-extrabold text-white mb-4">$250</p>
-                    <p class="text-slate-400 text-sm mb-4">A one-step machine polish that enhances gloss and removes light swirls and haze. Ideal for well-maintained daily drivers.</p>
-                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Removes up to ~50% of light defects</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Enhanced gloss &amp; clarity</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> ~3-4 hour service</li>
+                    <p class="text-zinc-400 text-sm mb-4">A one-step machine polish that enhances gloss and removes light swirls and haze. Ideal for well-maintained daily drivers.</p>
+                    <ul class="text-sm text-zinc-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Removes up to ~50% of light defects</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Enhanced gloss &amp; clarity</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> ~3-4 hour service</li>
                     </ul>
-                    <a href="#book" class="mt-auto text-center bg-slate-800 hover:bg-blue-600 text-white font-bold py-3 rounded-lg border border-slate-700 hover:border-blue-600 transition">Book Stage 1</a>
+                    <a href="#book" class="mt-auto text-center bg-zinc-900 hover:bg-zinc-200 hover:text-black text-white font-bold py-3 rounded-lg border border-zinc-700 hover:border-zinc-200 transition">Book Stage 1</a>
                 </div>
 
                 <!-- Stage 2 - featured -->
-                <div class="bg-slate-900 rounded-xl p-6 border-2 border-blue-500 relative flex flex-col shadow-lg shadow-blue-500/10">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 2</span>
+                <div class="bg-black rounded-xl p-6 border-2 border-zinc-300 relative flex flex-col shadow-lg shadow-zinc-400/10">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-zinc-200 text-black text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
+                    <span class="text-zinc-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 2</span>
                     <h3 class="text-xl font-bold text-white mb-2">Two-Step Correction</h3>
                     <p class="text-3xl font-extrabold text-white mb-4">$450</p>
-                    <p class="text-slate-400 text-sm mb-4">Compound + polish removes moderate swirls, scratches, and oxidation for a deep, reflective finish.</p>
-                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Removes up to ~75-85% of defects</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Compounding + finishing polish</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> ~5-7 hour service</li>
+                    <p class="text-zinc-400 text-sm mb-4">Compound + polish removes moderate swirls, scratches, and oxidation for a deep, reflective finish.</p>
+                    <ul class="text-sm text-zinc-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Removes up to ~75-85% of defects</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Compounding + finishing polish</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> ~5-7 hour service</li>
                     </ul>
-                    <a href="#book" class="mt-auto text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg shadow-blue-500/30 transition">Book Stage 2</a>
+                    <a href="#book" class="mt-auto text-center bg-zinc-200 hover:bg-white text-black font-bold py-3 rounded-lg shadow-lg shadow-black/40 transition">Book Stage 2</a>
                 </div>
 
                 <!-- Stage 3 -->
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition flex flex-col">
-                    <span class="text-blue-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 3</span>
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition flex flex-col">
+                    <span class="text-zinc-400 text-xs font-bold uppercase tracking-wide mb-2">Stage 3</span>
                     <h3 class="text-xl font-bold text-white mb-2">Multi-Stage Correction</h3>
                     <p class="text-3xl font-extrabold text-white mb-4">From $750</p>
-                    <p class="text-slate-400 text-sm mb-4">Heavy compounding and refinement (with wet sanding where needed) for neglected or heavily swirled/oxidized paint.</p>
-                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Removes ~90%+ of visible defects</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Near-showroom clarity</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Full day service, priced after inspection</li>
+                    <p class="text-zinc-400 text-sm mb-4">Heavy compounding and refinement (with wet sanding where needed) for neglected or heavily swirled/oxidized paint.</p>
+                    <ul class="text-sm text-zinc-400 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Removes ~90%+ of visible defects</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Near-showroom clarity</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-zinc-300"></i> Full day service, priced after inspection</li>
                     </ul>
-                    <a href="#book" class="mt-auto text-center bg-slate-800 hover:bg-blue-600 text-white font-bold py-3 rounded-lg border border-slate-700 hover:border-blue-600 transition">Book Stage 3</a>
+                    <a href="#book" class="mt-auto text-center bg-zinc-900 hover:bg-zinc-200 hover:text-black text-white font-bold py-3 rounded-lg border border-zinc-700 hover:border-zinc-200 transition">Book Stage 3</a>
                 </div>
             </div>
 
-            <div class="mt-8 bg-slate-900 rounded-xl p-6 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="mt-8 bg-black rounded-xl p-6 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <i class="fas fa-shield text-blue-500 text-3xl"></i>
+                    <i class="fas fa-shield text-zinc-300 text-3xl"></i>
                     <div>
                         <h4 class="font-bold text-white">Protect the correction with Ceramic Coating &mdash; $700</h4>
-                        <p class="text-sm text-slate-400">Lock in your freshly corrected finish with years of UV, chemical, and swirl resistance plus extreme gloss and water beading.</p>
+                        <p class="text-sm text-zinc-400">Lock in your freshly corrected finish with years of UV, chemical, and swirl resistance plus extreme gloss and water beading.</p>
                     </div>
                 </div>
-                <a href="#book" class="bg-slate-800 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-lg border border-slate-700 hover:border-blue-600 transition whitespace-nowrap">Add Ceramic Coating</a>
+                <a href="#book" class="bg-zinc-900 hover:bg-zinc-200 hover:text-black text-white font-bold px-6 py-3 rounded-lg border border-zinc-700 hover:border-zinc-200 transition whitespace-nowrap">Add Ceramic Coating</a>
             </div>
         </div>
     </div>
 
     <!-- Process -->
-    <div id="process" class="py-24 bg-slate-900">
+    <div id="process" class="py-24 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Paint Correction Process</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">A careful, methodical process every time &mdash; no shortcuts.</p>
+                <p class="text-zinc-400 max-w-2xl mx-auto">A careful, methodical process every time &mdash; no shortcuts.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div class="text-center">
-                    <div class="h-14 w-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mx-auto mb-4 text-blue-400 font-bold text-xl">1</div>
+                    <div class="h-14 w-14 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center mx-auto mb-4 text-zinc-200 font-bold text-xl">1</div>
                     <h3 class="font-bold text-white mb-2">Wash &amp; Decontaminate</h3>
-                    <p class="text-sm text-slate-400">Foam wash, iron remover, and clay bar to strip embedded contaminants down to bare paint.</p>
+                    <p class="text-sm text-zinc-400">Foam wash, iron remover, and clay bar to strip embedded contaminants down to bare paint.</p>
                 </div>
                 <div class="text-center">
-                    <div class="h-14 w-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mx-auto mb-4 text-blue-400 font-bold text-xl">2</div>
+                    <div class="h-14 w-14 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center mx-auto mb-4 text-zinc-200 font-bold text-xl">2</div>
                     <h3 class="font-bold text-white mb-2">Paint Inspection</h3>
-                    <p class="text-sm text-slate-400">We assess clear coat condition under direct light to determine the correction stage your paint needs.</p>
+                    <p class="text-sm text-zinc-400">We assess clear coat condition under direct light to determine the correction stage your paint needs.</p>
                 </div>
                 <div class="text-center">
-                    <div class="h-14 w-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mx-auto mb-4 text-blue-400 font-bold text-xl">3</div>
+                    <div class="h-14 w-14 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center mx-auto mb-4 text-zinc-200 font-bold text-xl">3</div>
                     <h3 class="font-bold text-white mb-2">Machine Correction</h3>
-                    <p class="text-sm text-slate-400">Compounding and polishing pass by pass, panel by panel, to level swirls, scratches &amp; oxidation.</p>
+                    <p class="text-sm text-zinc-400">Compounding and polishing pass by pass, panel by panel, to level swirls, scratches &amp; oxidation.</p>
                 </div>
                 <div class="text-center">
-                    <div class="h-14 w-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mx-auto mb-4 text-blue-400 font-bold text-xl">4</div>
+                    <div class="h-14 w-14 rounded-full bg-zinc-800 border border-zinc-600 flex items-center justify-center mx-auto mb-4 text-zinc-200 font-bold text-xl">4</div>
                     <h3 class="font-bold text-white mb-2">Seal &amp; Protect</h3>
-                    <p class="text-sm text-slate-400">A paint sealant or ceramic coating locks in the finish and protects your investment.</p>
+                    <p class="text-sm text-zinc-400">A paint sealant or ceramic coating locks in the finish and protects your investment.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Services Section -->
-    <div id="services" class="py-24 bg-slate-800">
+    <div id="services" class="py-24 bg-zinc-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Additional Services</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Round out your correction with our other mobile detailing services.</p>
+                <p class="text-zinc-400 max-w-2xl mx-auto">Round out your correction with our other mobile detailing services.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Interior Detail</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$75</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Interior Detail</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$75</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Deep vacuum, surface wipe down, glass cleaning, and odor neutralization for a fresh cabin.</p>
+                    <p class="text-zinc-400 text-sm">Deep vacuum, surface wipe down, glass cleaning, and odor neutralization for a fresh cabin.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Exterior Detail</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$75</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Exterior Detail</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$75</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Hand wash, wheel &amp; tire deep clean, tire shine, and spray wax application for a brilliant glow.</p>
+                    <p class="text-zinc-400 text-sm">Hand wash, wheel &amp; tire deep clean, tire shine, and spray wax application for a brilliant glow.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Full Detail (Int &amp; Ext)</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$150</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Full Detail (Int &amp; Ext)</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$150</span>
                     </div>
-                    <p class="text-slate-400 text-sm">The complete package. Combines our comprehensive interior and exterior detailing services.</p>
+                    <p class="text-zinc-400 text-sm">The complete package. Combines our comprehensive interior and exterior detailing services.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Clay Bar Treatment</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$40</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Clay Bar Treatment</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$40</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Removes embedded contaminants from the clear coat, prepping paint for correction or leaving it smooth as glass.</p>
+                    <p class="text-zinc-400 text-sm">Removes embedded contaminants from the clear coat, prepping paint for correction or leaving it smooth as glass.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Maintenance Detail</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$90</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Maintenance Detail</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$90</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Routine upkeep for previously corrected or coated vehicles to maintain that pristine finish.</p>
+                    <p class="text-zinc-400 text-sm">Routine upkeep for previously corrected or coated vehicles to maintain that pristine finish.</p>
                 </div>
 
-                <div class="bg-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500 transition group">
+                <div class="bg-black rounded-xl p-6 border border-zinc-800 hover:border-zinc-500 transition group">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Ceramic Coating</h3>
-                        <span class="bg-blue-500/10 text-blue-400 font-bold px-3 py-1 rounded-full text-sm">$700</span>
+                        <h3 class="text-xl font-bold text-white group-hover:text-zinc-200 transition">Ceramic Coating</h3>
+                        <span class="bg-zinc-800 text-zinc-300 font-bold px-3 py-1 rounded-full text-sm">$700</span>
                     </div>
-                    <p class="text-slate-400 text-sm">Semi-permanent nanoceramic layer that protects corrected paint against UV, chemicals &amp; swirling for years.</p>
+                    <p class="text-zinc-400 text-sm">Semi-permanent nanoceramic layer that protects corrected paint against UV, chemicals &amp; swirling for years.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Testimonials -->
-    <div class="py-24 bg-slate-950">
+    <div class="py-24 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                    <div class="text-yellow-500 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-slate-300 text-sm mb-4">"My black SUV had swirls everywhere from the car wash down the street. After the Stage 2 correction it looks like it just rolled off the lot. Incredible reflection."</p>
-                    <p class="text-slate-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
+                <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                    <div class="text-amber-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-zinc-300 text-sm mb-4">"My black SUV had swirls everywhere from the car wash down the street. After the Stage 2 correction it looks like it just rolled off the lot. Incredible reflection."</p>
+                    <p class="text-zinc-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
                 </div>
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                    <div class="text-yellow-500 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-slate-300 text-sm mb-4">"They came to my driveway, walked me through the paint inspection, and explained exactly what stage I needed. No upsell, just honest work."</p>
-                    <p class="text-slate-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
+                <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                    <div class="text-amber-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-zinc-300 text-sm mb-4">"They came to my driveway, walked me through the paint inspection, and explained exactly what stage I needed. No upsell, just honest work."</p>
+                    <p class="text-zinc-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
                 </div>
-                <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                    <div class="text-yellow-500 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-slate-300 text-sm mb-4">"Got the correction plus ceramic coating. Six months later water still beads right off and there's not a swirl in sight. Worth every penny."</p>
-                    <p class="text-slate-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
+                <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800">
+                    <div class="text-amber-400 mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-zinc-300 text-sm mb-4">"Got the correction plus ceramic coating. Six months later water still beads right off and there's not a swirl in sight. Worth every penny."</p>
+                    <p class="text-zinc-500 text-xs font-bold">&mdash; Local Venice, FL client</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- FAQ -->
-    <div id="faq" class="py-24 bg-slate-900">
+    <div id="faq" class="py-24 bg-zinc-950">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Paint Correction FAQ</h2>
             </div>
             <div class="space-y-4">
-                <details class="bg-slate-800 rounded-xl border border-slate-700 p-5 group">
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
                     <summary class="flex justify-between items-center font-bold text-white">
                         Will paint correction remove every scratch?
-                        <i class="fas fa-chevron-down text-blue-400 faq-chevron transition"></i>
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
                     </summary>
-                    <p class="text-slate-400 text-sm mt-3">Correction removes anything within the clear coat &mdash; swirls, most light-to-moderate scratches, oxidation, and water spots. Deep scratches that go through the clear coat into the base color can be improved but not fully erased without paint touch-up.</p>
+                    <p class="text-zinc-400 text-sm mt-3">Correction removes anything within the clear coat &mdash; swirls, most light-to-moderate scratches, oxidation, and water spots. Deep scratches that go through the clear coat into the base color can be improved but not fully erased without paint touch-up.</p>
                 </details>
-                <details class="bg-slate-800 rounded-xl border border-slate-700 p-5 group">
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
                     <summary class="flex justify-between items-center font-bold text-white">
                         Is machine polishing safe for my clear coat?
-                        <i class="fas fa-chevron-down text-blue-400 faq-chevron transition"></i>
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
                     </summary>
-                    <p class="text-slate-400 text-sm mt-3">Yes. We measure clear coat thickness before correcting and use the least aggressive pad/compound combination needed for your paint's condition, so we only remove the microscopic amount necessary.</p>
+                    <p class="text-zinc-400 text-sm mt-3">Yes. We measure clear coat thickness before correcting and use the least aggressive pad/compound combination needed for your paint's condition, so we only remove the microscopic amount necessary.</p>
                 </details>
-                <details class="bg-slate-800 rounded-xl border border-slate-700 p-5 group">
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
                     <summary class="flex justify-between items-center font-bold text-white">
                         How long will the results last?
-                        <i class="fas fa-chevron-down text-blue-400 faq-chevron transition"></i>
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
                     </summary>
-                    <p class="text-slate-400 text-sm mt-3">The correction itself is permanent until new swirls occur from washing. We recommend sealing it with a ceramic coating so the glossy, corrected finish stays protected and easier to maintain for years.</p>
+                    <p class="text-zinc-400 text-sm mt-3">The correction itself is permanent until new swirls occur from washing. We recommend sealing it with a ceramic coating so the glossy, corrected finish stays protected and easier to maintain for years.</p>
                 </details>
-                <details class="bg-slate-800 rounded-xl border border-slate-700 p-5 group">
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
                     <summary class="flex justify-between items-center font-bold text-white">
                         How do I know which stage my car needs?
-                        <i class="fas fa-chevron-down text-blue-400 faq-chevron transition"></i>
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
                     </summary>
-                    <p class="text-slate-400 text-sm mt-3">Every booking starts with a free paint inspection under direct light. We'll show you the defects and recommend the lightest stage that gets the results you want &mdash; you approve the plan and price before we start.</p>
+                    <p class="text-zinc-400 text-sm mt-3">Every booking starts with a free paint inspection under direct light. We'll show you the defects and recommend the lightest stage that gets the results you want &mdash; you approve the plan and price before we start.</p>
                 </details>
-                <details class="bg-slate-800 rounded-xl border border-slate-700 p-5 group">
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
                     <summary class="flex justify-between items-center font-bold text-white">
                         Do you come to me?
-                        <i class="fas fa-chevron-down text-blue-400 faq-chevron transition"></i>
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
                     </summary>
-                    <p class="text-slate-400 text-sm mt-3">Yes, we're a fully mobile unit. We bring all water, power, and equipment needed and perform the correction right in your driveway or lot.</p>
+                    <p class="text-zinc-400 text-sm mt-3">Yes, we're a fully mobile unit. We bring all water, power, and equipment needed and perform the correction right in your driveway or lot.</p>
+                </details>
+                <details class="bg-black rounded-xl border border-zinc-800 p-5 group">
+                    <summary class="flex justify-between items-center font-bold text-white">
+                        Do I have to pay online to book?
+                        <i class="fas fa-chevron-down text-zinc-300 faq-chevron transition"></i>
+                    </summary>
+                    <p class="text-zinc-400 text-sm mt-3">No. Paying the $50 deposit online instantly reserves your slot, but it's optional. You can also just fill out the free assessment form below with no payment required and we'll follow up to schedule.</p>
                 </details>
             </div>
         </div>
     </div>
 
     <!-- Service Area Section -->
-    <div id="area" class="py-20 bg-slate-950 border-y border-slate-800">
+    <div id="area" class="py-20 bg-black border-y border-zinc-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center justify-center p-4 bg-blue-500/10 rounded-full mb-6 text-blue-500">
+            <div class="inline-flex items-center justify-center p-4 bg-zinc-900 rounded-full mb-6 text-zinc-300 border border-zinc-700">
                 <i class="fas fa-map-marker-alt text-3xl"></i>
             </div>
             <h2 class="text-3xl font-bold text-white mb-6">Service Area &amp; Mobile Policy</h2>
-            <p class="text-lg text-slate-300 mb-6">
+            <p class="text-lg text-zinc-300 mb-6">
                 We are a fully mobile detailing unit proudly operating out of <strong>Venice, Florida</strong>.
                 We bring the paint correction studio to your home, office, or apartment.
             </p>
-            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 inline-block text-left">
-                <ul class="space-y-3 text-slate-300">
+            <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 inline-block text-left">
+                <ul class="space-y-3 text-zinc-300">
                     <li class="flex items-center gap-3">
-                        <i class="fas fa-check-circle text-green-500"></i>
+                        <i class="fas fa-check-circle text-emerald-500"></i>
                         <span><strong>Standard Radius:</strong> Within 10 miles of Venice, FL (No travel fee)</span>
                     </li>
                     <li class="flex items-center gap-3">
-                        <i class="fas fa-info-circle text-yellow-500"></i>
+                        <i class="fas fa-info-circle text-amber-400"></i>
                         <span><strong>Extended Radius:</strong> Over 10 miles ($30 upcharge applies)</span>
                     </li>
                 </ul>
@@ -407,108 +416,136 @@
     </div>
 
     <!-- Booking Section -->
-    <div id="book" class="py-24 bg-slate-800">
+    <div id="book" class="py-24 bg-zinc-950">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-700">
+
+            <!-- Deposit / reserve online -->
+            <div class="bg-zinc-900 rounded-2xl border border-zinc-300/20 p-8 shadow-xl shadow-black/40 mb-8">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fas fa-lock text-zinc-300 text-xl"></i>
+                    <h3 class="text-2xl font-bold text-white">Reserve Your Spot Online</h3>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6">Pay a $50 deposit to lock in your appointment instantly via secure Stripe checkout. It's applied toward your total service cost &mdash; the remaining balance is due on-site.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <select id="depositService" class="flex-1 bg-black border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
+                        <option value="stage1">Stage 1 Paint Correction ($250)</option>
+                        <option value="stage2" selected>Stage 2 Paint Correction ($450)</option>
+                        <option value="ceramic">Ceramic Coating ($700)</option>
+                        <option value="fullDetail">Full Detail ($150)</option>
+                        <option value="exterior">Exterior Detail ($75)</option>
+                        <option value="interior">Interior Detail ($75)</option>
+                        <option value="maintenance">Maintenance Detail ($90)</option>
+                        <option value="claybar">Clay Bar Treatment ($40)</option>
+                    </select>
+                    <button id="depositButton" type="button" class="bg-zinc-200 hover:bg-white text-black font-bold px-6 py-3 rounded-lg shadow-lg shadow-black/40 transition whitespace-nowrap flex items-center justify-center gap-2">
+                        <i class="fas fa-credit-card"></i> Pay $50 Deposit
+                    </button>
+                </div>
+                <p id="depositError" class="text-red-400 text-sm mt-3 hidden"></p>
+                <p class="text-xs text-zinc-500 mt-4">Need Stage 3 pricing or have questions first? Use the free assessment form below instead &mdash; no payment required.</p>
+            </div>
+
+            <div class="bg-black rounded-2xl shadow-xl p-8 border border-zinc-800">
                 <h2 class="text-3xl font-bold text-white mb-2 text-center">Request a Free Paint Assessment</h2>
-                <p class="text-slate-400 text-center mb-8">Fill out the form below and we'll contact you to confirm your slot.</p>
+                <p class="text-zinc-400 text-center mb-8">Fill out the form below and we'll contact you to confirm your slot.</p>
 
                 <form action="mailto:pratt2093@gmail.com" method="POST" enctype="text/plain" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
-                            <input type="text" name="Name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <label class="block text-sm font-medium text-zinc-300 mb-2">Name</label>
+                            <input type="text" name="Name" required class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Phone</label>
-                            <input type="tel" name="Phone" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <label class="block text-sm font-medium text-zinc-300 mb-2">Phone</label>
+                            <input type="tel" name="Phone" required class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Vehicle Make, Model &amp; Year</label>
-                        <input type="text" name="Vehicle" placeholder="e.g., 2021 Ford F-150" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <label class="block text-sm font-medium text-zinc-300 mb-2">Vehicle Make, Model &amp; Year</label>
+                        <input type="text" name="Vehicle" placeholder="e.g., 2021 Ford F-150" required class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Service Location (Address)</label>
-                        <input type="text" name="Address" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <label class="block text-sm font-medium text-zinc-300 mb-2">Service Location (Address)</label>
+                        <input type="text" name="Address" required class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-3">Services Needed (Check all that apply)</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Stage 1 Paint Correction ($250)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                        <label class="block text-sm font-medium text-zinc-300 mb-3">Services Needed (Check all that apply)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-zinc-900 p-4 rounded-lg border border-zinc-700">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Stage 1 Paint Correction ($250)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Stage 1 Correction ($250)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Stage 2 Paint Correction ($450)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Stage 2 Paint Correction ($450)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Stage 2 Correction ($450)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Stage 3 Paint Correction (From $750)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Stage 3 Paint Correction (From $750)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Stage 3 Correction (From $750)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Ceramic Coating ($700)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Ceramic Coating ($700)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Ceramic Coating ($700)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Clay Bar ($40)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Clay Bar ($40)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Clay Bar ($40)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Interior ($75)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Interior ($75)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Interior ($75)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Exterior ($75)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Exterior ($75)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Exterior ($75)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Full Detail ($150)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Full Detail ($150)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Full Detail ($150)</span>
                             </label>
-                            <label class="flex items-center space-x-3 text-slate-300 cursor-pointer">
-                                <input type="checkbox" name="Service" value="Maintenance ($90)" class="form-checkbox h-5 w-5 text-blue-500 rounded border-slate-600 bg-slate-900">
+                            <label class="flex items-center space-x-3 text-zinc-300 cursor-pointer">
+                                <input type="checkbox" name="Service" value="Maintenance ($90)" class="h-5 w-5 rounded accent-zinc-300 bg-black">
                                 <span>Maintenance ($90)</span>
                             </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">Tell us about your paint (optional)</label>
-                        <textarea name="Notes" rows="3" placeholder="e.g., visible swirls in direct sun, a few scratches on the door, never been corrected before..." class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                        <label class="block text-sm font-medium text-zinc-300 mb-2">Tell us about your paint (optional)</label>
+                        <textarea name="Notes" rows="3" placeholder="e.g., visible swirls in direct sun, a few scratches on the door, never been corrected before..." class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg shadow-blue-500/30 transition text-lg mt-4">
+                    <button type="submit" class="w-full bg-zinc-200 hover:bg-white text-black font-bold py-4 px-8 rounded-lg shadow-lg shadow-black/40 transition text-lg mt-4">
                         Send Booking Request
                     </button>
-                    <p class="text-xs text-slate-500 text-center mt-4">By submitting, an email draft will be created with your details to send to our team.</p>
+                    <p class="text-xs text-zinc-500 text-center mt-4">By submitting, an email draft will be created with your details to send to our team.</p>
                 </form>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+    <footer class="bg-black py-12 border-t border-zinc-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
-                <img src="logo.svg" alt="Pressure Auto Detailing" class="h-8 w-8 grayscale opacity-50">
-                <span class="font-bold text-lg tracking-tight text-slate-500 uppercase">Pressure Detailing</span>
+                <img src="logo.svg" alt="Blackline Detailing" class="h-8 w-8 grayscale opacity-50">
+                <span class="font-bold text-lg tracking-tight text-zinc-500 uppercase">Blackline Detailing</span>
             </div>
-            <div class="text-slate-500 text-sm">
-                <a href="mailto:pratt2093@gmail.com" class="hover:text-blue-400 mr-4"><i class="fas fa-envelope mr-2"></i>pratt2093@gmail.com</a>
-                <a href="tel:7208855927" class="hover:text-blue-400"><i class="fas fa-phone mr-2"></i>(720) 885-5927</a>
+            <div class="text-zinc-500 text-sm">
+                <a href="mailto:pratt2093@gmail.com" class="hover:text-zinc-300 mr-4"><i class="fas fa-envelope mr-2"></i>pratt2093@gmail.com</a>
+                <a href="tel:7208855927" class="hover:text-zinc-300"><i class="fas fa-phone mr-2"></i>(720) 885-5927</a>
             </div>
-            <div class="text-slate-600 text-sm">
-                &copy; 2026 Pressure Auto Detailing. All rights reserved.
+            <div class="text-zinc-600 text-sm">
+                &copy; 2026 Blackline Detailing. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script>
+        // Before/after comparison slider
         const slider = document.getElementById('compareSlider');
         const afterPanel = document.getElementById('afterPanel');
         const handleLine = document.getElementById('handleLine');
@@ -517,6 +554,50 @@
             afterPanel.style.width = value;
             handleLine.style.left = value;
         });
+
+        // Stripe deposit checkout
+        const depositButton = document.getElementById('depositButton');
+        const depositService = document.getElementById('depositService');
+        const depositError = document.getElementById('depositError');
+        depositButton.addEventListener('click', async () => {
+            depositError.classList.add('hidden');
+            depositButton.disabled = true;
+            const originalLabel = depositButton.innerHTML;
+            depositButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+            try {
+                const res = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ service: depositService.value }),
+                });
+                const data = await res.json();
+                if (!res.ok || !data.url) {
+                    throw new Error(data.error || 'Something went wrong starting checkout.');
+                }
+                window.location.href = data.url;
+            } catch (err) {
+                depositError.textContent = err.message || 'Unable to start checkout. Please call us instead.';
+                depositError.classList.remove('hidden');
+                depositButton.disabled = false;
+                depositButton.innerHTML = originalLabel;
+            }
+        });
+
+        // Payment status banner after returning from Stripe
+        const params = new URLSearchParams(window.location.search);
+        const paymentStatus = params.get('payment');
+        if (paymentStatus === 'success' || paymentStatus === 'cancelled') {
+            const banner = document.getElementById('statusBanner');
+            if (paymentStatus === 'success') {
+                banner.textContent = "Deposit received — you're booked! We'll reach out shortly to confirm your appointment time.";
+                banner.className = 'border-b text-sm text-center py-3 px-4 bg-emerald-500/10 border-emerald-500/30 text-emerald-300';
+            } else {
+                banner.textContent = 'Checkout was cancelled — no charge was made. Feel free to try again or contact us directly.';
+                banner.className = 'border-b text-sm text-center py-3 px-4 bg-zinc-900 border-zinc-700 text-zinc-300';
+            }
+            banner.classList.remove('hidden');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
     </script>
 
 </body>
