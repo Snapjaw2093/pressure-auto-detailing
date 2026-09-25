@@ -449,7 +449,7 @@
                 <h2 class="text-3xl font-bold text-white mb-2 text-center">Request a Free Paint Assessment</h2>
                 <p class="text-zinc-400 text-center mb-8">Fill out the form below and we'll contact you to confirm your slot.</p>
 
-                <form action="mailto:pratt2093@gmail.com" method="POST" enctype="text/plain" class="space-y-6">
+                <form id="bookingForm" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-zinc-300 mb-2">Name</label>
@@ -459,6 +459,11 @@
                             <label class="block text-sm font-medium text-zinc-300 mb-2">Phone</label>
                             <input type="tel" name="Phone" required class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                         </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-zinc-300 mb-2">Email (optional)</label>
+                        <input type="email" name="Email" placeholder="you@example.com" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400">
                     </div>
 
                     <div>
@@ -518,10 +523,12 @@
                         <textarea name="Notes" rows="3" placeholder="e.g., visible swirls in direct sun, a few scratches on the door, never been corrected before..." class="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-400 focus:ring-1 focus:ring-zinc-400"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-zinc-200 hover:bg-white text-black font-bold py-4 px-8 rounded-lg shadow-lg shadow-black/40 transition text-lg mt-4">
+                    <button id="bookingSubmit" type="submit" class="w-full bg-zinc-200 hover:bg-white text-black font-bold py-4 px-8 rounded-lg shadow-lg shadow-black/40 transition text-lg mt-4">
                         Send Booking Request
                     </button>
-                    <p class="text-xs text-zinc-500 text-center mt-4">By submitting, an email draft will be created with your details to send to our team.</p>
+                    <p id="bookingSuccess" class="text-emerald-400 text-sm text-center mt-4 hidden">Thanks! Your request has been sent &mdash; we'll reach out shortly to confirm your appointment.</p>
+                    <p id="bookingError" class="text-red-400 text-sm text-center mt-4 hidden"></p>
+                    <p class="text-xs text-zinc-500 text-center mt-4">By submitting, your request is sent directly to our team.</p>
                 </form>
             </div>
         </div>
@@ -580,6 +587,51 @@
                 depositError.classList.remove('hidden');
                 depositButton.disabled = false;
                 depositButton.innerHTML = originalLabel;
+            }
+        });
+
+        // Booking request form
+        const bookingForm = document.getElementById('bookingForm');
+        const bookingSubmit = document.getElementById('bookingSubmit');
+        const bookingSuccess = document.getElementById('bookingSuccess');
+        const bookingError = document.getElementById('bookingError');
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            bookingSuccess.classList.add('hidden');
+            bookingError.classList.add('hidden');
+            bookingSubmit.disabled = true;
+            const originalLabel = bookingSubmit.innerHTML;
+            bookingSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            const formData = new FormData(bookingForm);
+            const payload = {
+                name: formData.get('Name'),
+                phone: formData.get('Phone'),
+                email: formData.get('Email'),
+                vehicle: formData.get('Vehicle'),
+                address: formData.get('Address'),
+                services: formData.getAll('Service'),
+                notes: formData.get('Notes'),
+            };
+
+            try {
+                const res = await fetch('/api/send-booking-request', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+                const data = await res.json();
+                if (!res.ok || !data.ok) {
+                    throw new Error(data.error || 'Something went wrong sending your request.');
+                }
+                bookingSuccess.classList.remove('hidden');
+                bookingForm.reset();
+            } catch (err) {
+                bookingError.textContent = err.message || 'Unable to send your request. Please call us instead.';
+                bookingError.classList.remove('hidden');
+            } finally {
+                bookingSubmit.disabled = false;
+                bookingSubmit.innerHTML = originalLabel;
             }
         });
 

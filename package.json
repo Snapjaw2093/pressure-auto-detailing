@@ -2,8 +2,9 @@
   "name": "blackline-detailing",
   "private": true,
   "version": "1.0.0",
-  "description": "Blackline Detailing marketing site with Stripe-powered booking deposits, deployed on Vercel.",
+  "description": "Blackline Detailing marketing site with Stripe-powered booking deposits and email booking requests, deployed on Vercel.",
   "dependencies": {
+    "resend": "^4.0.1",
     "stripe": "^17.4.0"
   }
 }
